@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-$_%kbh6s9^vzj^+z52fyv68n66$9)6aake0mqak60)k&evfjb@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 
 # Application definition
@@ -128,18 +129,15 @@ BOOTSTRAP3 = {
  }
 LOGOUT_REDIRECT_URL = 'learning_logs:index'
 
-# ==============================================================================
-# MODERN HEROKU & PRODUCTION SETTINGS (DJANGO 6 COMPATIBLE)
-# ==============================================================================
-ALLOWED_HOSTS = ['*']
-if os.getcwd() == '/app':
-    DATABASES = {
-        'default':dj_database_url.config(
-            default='postgres://localhost',
-            conn_max_age=600,         
-            conn_health_checks=True    
-)
-    }
+#production settings: - 
+ALLOWED_HOSTS = ['.onrender.com']
+DATABASES = {
+    'default': dj_database_url.config(
+        default='sqlite:///db.sqlite3',
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
+}
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
