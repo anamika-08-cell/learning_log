@@ -1,6 +1,14 @@
+# virtual environment
 ll_env/
+venv/
+.venv/
+
+# python cache
 __pycache__/
 *.pyc
-db.sqlite3
+
+# static files (optional depending project)
 staticfiles/
-*.log
+
+# env file
+.env
