@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from django.http import HttpResponseRedirect, Http404
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
@@ -27,7 +27,7 @@ def topics(request):
 @login_required
 def topic(request, topic_id):
   """Show a single topic and all it's entry."""
-  topic = get_object_or_404(Topic, id=topic_id)
+  # topic = get_object_or_404(Topic, id=topic_id)---------------------------------------------
   # Make sure the topic belongs to the current user.
   if topic.owner != request.user:
      raise Http404
@@ -95,3 +95,5 @@ def edit_entry(request, entry_id):
 
   context = {'entry': entry, 'topic': topic, 'form': form}
   return render(request, 'learning_logs/edit_entry.html', context)
+
+

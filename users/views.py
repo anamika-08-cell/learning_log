@@ -1,11 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.contrib.auth import login, logout, authenticate
 
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse
-from django.contrib.auth import logout
 from django.http import HttpResponseRedirect
 
 

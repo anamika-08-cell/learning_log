@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
-import os
 import dj_database_url
+import os
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,6 +28,7 @@ SECRET_KEY = 'django-insecure-$_%kbh6s9^vzj^+z52fyv68n66$9)6aake0mqak60)k&evfjb@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.onrender.com']
 
 # Application definition
 
@@ -59,7 +60,7 @@ ROOT_URLCONF = 'learning_log.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'learning_log/learning_log/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -130,7 +131,6 @@ BOOTSTRAP3 = {
 LOGOUT_REDIRECT_URL = 'learning_logs:index'
 
 #production settings: - 
-ALLOWED_HOSTS = ['.onrender.com']
 DATABASES = {
     'default': dj_database_url.config(
         default='sqlite:///db.sqlite3',
